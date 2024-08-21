@@ -1,33 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Unikit    -->
+    <link rel="stylesheet" href="vendor/uikit/css/uikit.min.css"/>
+    <script src="vendor/uikit/js/uikit.min.js"></script>
+    <script src="vendor/uikit/js/uikit-icons.min.js"></script>
+
+    <!--  Mon theme  -->
+    <link rel="stylesheet" href="eni-theme.css">
+    <!--font awesome-->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+
     <meta charset="UTF-8">
     <title>movie-list</title>
-</head>
-<body>
 
-<h1>Movie list</h1>
-<div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid aspernatur dolor ea excepturi
-        explicabo illo ipsa laudantium mollitia nulla perferendis quos sed sit, vel vero voluptate voluptatum! Nemo,
-        quia.</p>
-</div>
+
+</head>
+<body class="background">
 
 <div>
     <a class="uk-link-muted" href="home">Home page</a>
 </div>
 
-<div>
-    <a class="uk-link-muted" href="#">1° movie</a>
+<ul>
+    <li th:each="film : ${films}" th:text="${film.title}"></li>
+</ul>
+
+<h1>Movie list</h1>
+
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-1@s uk-margin" uk-grid>
+
+    <div th:each="film : ${films}" class="eni-card">
+        <div class="uk-card-media-bottom uk-cover-container" >
+
+            <a class="uk-link-muted" href="home">
+                <img th:src="${film.pathImg}" alt="" uk-cover href="home">
+            </a>
+
+            <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title" th:text="${film.title}"></h3>
+                <i class="fa fa-star eni-star-check"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <p th:text="${film.synopsis}">.</p>
+            </div>
+        </div>
+
+    </div>
+
+
 </div>
 
-<div>
-    <a class="uk-link-muted" href="#">2° movie</a>
-</div>
 
-<div>
-    <a class="uk-link-muted" href="#">3° movie</a>
-</div>
 
 </body>
 </html>
