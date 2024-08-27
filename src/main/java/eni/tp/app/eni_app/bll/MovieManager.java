@@ -17,5 +17,11 @@ public class MovieManager {
 
     }
 
+    public Movie selectMovieById(int id){
+
+        return daoMovie.getMovieById(id);
+
+    }
+
 
 }

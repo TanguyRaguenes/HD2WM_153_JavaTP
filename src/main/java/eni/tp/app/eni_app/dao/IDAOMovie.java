@@ -7,4 +7,5 @@ import java.util.List;
 public interface IDAOMovie {
 
     public abstract List<Movie> getMoviesList();
+    public abstract Movie getMovieById(int id);
 }

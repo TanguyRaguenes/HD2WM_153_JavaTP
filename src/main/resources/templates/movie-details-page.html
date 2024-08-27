@@ -1,28 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Unikit    -->
-    <link rel="stylesheet" href="vendor/uikit/css/uikit.min.css"/>
-    <script src="vendor/uikit/js/uikit.min.js"></script>
-    <script src="vendor/uikit/js/uikit-icons.min.js"></script>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/base}"
+>
 
-    <!--  Mon theme  -->
-    <link rel="stylesheet" href="eni-theme.css">
+<body layout:fragment="content">
 
-    <meta charset="UTF-8">
-    <title>movie-detail</title>
-</head>
-<body>
+<div>
+    <a class="uk-link-muted" href="../moviesList">Movies list</a>
+</div>
+
+
 <h1>Movie detail</h1>
-<div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid aspernatur dolor ea excepturi
-        explicabo illo ipsa laudantium mollitia nulla perferendis quos sed sit, vel vero voluptate voluptatum! Nemo,
-        quia.</p>
+
+<div class="uk-child-width-1-1@m" uk-grid>
+
+    <div class="eni-card">
+
+        <div class="uk-card uk-card-default">
+
+            <div class="uk-card-media-top eni-container-img">
+                <img th:src="${'../' + movie.pathImg}" width="1800" height="1200" alt="">
+            </div>
+
+            <div class="uk-card-body">
+
+                <h3 class="uk-card-title" th:text="${movie.title}"></h3>
+
+                <i th:each="star: ${maxStars}" class="fa fa-star"
+                   th:classappend="${movie.getNote()>=star} ? 'eni-star-check' :''"></i>
+
+                <div>
+                    <span th:text="${'Année : ' + movie.year}"></span>
+                    -
+                    <span th:text="${'Durée : ' + movie.duration}"></span>
+                </div>
+
+                <p th:text="${movie.synopsis}">.</p>
+
+                <img th:src="${'../' + movie.pathImg}" width="1800" height="1200" alt="">
+
+                <!--      ou          -->
+
+                <a th:href="@{'/movie-detail/' + ${movie.id}}"></a>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
-<div>
-    <a class="uk-link-muted" href="home">Home page</a>
-</div>
+
+<!--<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-1@s uk-margin" uk-grid>-->
+
+<!--    <div class="eni-card">-->
+<!--        <div class="uk-card-media-bottom uk-cover-container">-->
+
+<!--            <a class="uk-link-muted">-->
+<!--                <img th:src="${'../' + movie.pathImg}" alt="" uk-cover>-->
+<!--            </a>-->
+
+<!--            <canvas width="600" height="400"></canvas>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <div class="uk-card-body">-->
+<!--                <h3 class="uk-card-title" th:text="${movie.title}"></h3>-->
+
+<!--                <i th:each="star: ${maxStars}" class="fa fa-star"-->
+<!--                   th:classappend="${movie.getNote()>=star} ? 'eni-star-check' :''"></i>-->
+
+<!--                <div>-->
+<!--                    <span th:text="${'Année : ' + movie.year}"></span>-->
+<!--                    - -->
+<!--                    <span th:text="${'Durée : ' + movie.duration}"></span>-->
+<!--                </div>-->
+<!--                <p th:text="${movie.synopsis}">.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</div>-->
 
 </body>
 </html>

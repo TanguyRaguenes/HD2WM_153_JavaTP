@@ -13,4 +13,9 @@ public class DAOMovieSQL implements IDAOMovie{
     public List<Movie> getMoviesList() {
         return List.of();
     }
+
+    @Override
+    public Movie getMovieById(int id) {
+        return null;
+    }
 }

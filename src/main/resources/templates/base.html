@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <!--  responsive  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- uikit    -->
+    <link rel="stylesheet" href="/vendor/uikit/css/uikit.min.css"/>
+    <script src="/vendor/uikit/js/uikit.min.js"></script>
+    <script src="/vendor/uikit/js/uikit-icons.min.js"></script>
+
+    <!--  mon theme  -->
+    <link rel="stylesheet" href="eni-theme.css">
+
+    <!-- fontawesome-->
+    <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
+    <!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"-->
+    <!--          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>-->
+
+
+    <meta charset="UTF-8">
+    <title>home-page</title>
+
+
+</head>
+
+<nav>
+    <div class="uk-navbar-right">
+
+        <a th:if="${loggedUser == null}" class="uk-icon-button" href="/show-login">
+            <i class="fas fa-user"></i>
+        </a>
+
+        <a th:if="${loggedUser != null}" class="uk-icon-button" href="/show-logout">
+            <i class="fas fa-door-open"></i>
+        </a>
+
+    </div>
+
+    <nav class="uk-navbar-container">
+        <div class="uk-container">
+            <div uk-navbar>
+
+                <div class="uk-navbar-left">
+
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li>
+                            <a href="#">Parent</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-active"><a href="#">Active</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+</nav>
+
+<!-- Flash message conditionnel -->
+<!-- Affiche un message temporaire si il existe -->
+<div th:if="${flashMessage}" class="uk-padding-small">
+    <div th:classappend="${flashMessage.getTypeCssClass()}" uk-alert>
+        <a href class="uk-alert-close" uk-close></a>
+        <p th:text="${flashMessage.message}"></p>
+    </div>
+</div>
+
+<body layout:fragment="content">
+todo
+</body>
+
+<footer class="eni-footer">
+    <span>Copyright 2024 - <span style="color: dodgerblue">created by Tanguy</span> | Build with </span>
+    <div class="eni-logo-container">
+        <img src="/spring.svg" alt="" class="eni-logo">
+    </div>
+
+</footer>
+
+
+</html>

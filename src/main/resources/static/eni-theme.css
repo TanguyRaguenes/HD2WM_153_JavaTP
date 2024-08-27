@@ -26,4 +26,33 @@ body, html{
 .eni-card{
     border: red 2px solid;
     margin-bottom: 5px;
+    /*width: 90%;*/
+
+}
+
+img{
+    /*object-fit: cover;*/
+
+}
+
+.eni-container-img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.eni-footer{
+    background-color: lightgrey;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+}
+.eni-logo-container{
+    height: 20px;
+    width: 20px;
+}
+.eni-logo{
+    height: 100%;
+    width:100%;
 }
